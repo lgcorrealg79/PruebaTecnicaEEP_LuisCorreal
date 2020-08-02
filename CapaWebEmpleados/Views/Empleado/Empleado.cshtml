@@ -1,0 +1,127 @@
+﻿<!-- Vista que muestra los componentes para consultar empleados -->
+
+@{
+    ViewBag.Title = "Empleado";
+}
+
+<h1 style="color: #039;">Empleados</h1>
+<input type="text" id="txtId" placeholder="Ingrese el Id del empleado..." /> <input type="button" id="btnPost" value="Buscar" />
+<br />
+<div>
+    <table id="tblEmpleado">
+        <thead>
+            
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnPost").click(function () {
+            /*var emp = new Object();
+            emp.id = $('#txtId').val();*/
+
+            var searchby = {
+                id: $('#txtId').val()
+            };
+
+            console.log(searchby);
+
+            $("#tblEmpleado tbody tr").remove();
+            $.ajax({
+                type: 'POST',
+                data: searchby,
+                url: "/Empleado/Empleado/",
+                //dataType: 'application/x-www-form-urlencoded; charset=utf-8',
+                success: function (data) {
+                    $("#imgLoading").hide();
+                    var items = '';
+                    var rows = "<tr>"
+                        + "<th class='empleado_th'>Empleado ID</th><th class='empleado_th'>Nombre</th><th class='empleado_th'>Tipo Contrato</th><th class='empleado_th'>Rol Id</th><th class='empleado_th'>Rol</th><th class='empleado_th'>Descripción Rol</th><th  class='empleado_th'>Salario por Hora</th><th class='empleado_th'>Salario por Mes</th><th class='empleado_th'>Salario Anual</th>"
+                        + "</tr>";
+                    $('#tblEmpleado tbody').append(rows);
+
+                    $.each(data, function (i, item) {
+                        var rows = "<tr>"
+                            + "<td class='empleado_td'>" + item.id + "</td>"
+                            + "<td class='empleado_td'>" + item.name + "</td>"
+                            + "<td class='empleado_td'>" + item.contractTypeName + "</td>"
+                            + "<td class='empleado_td'>" + item.roleId + "</td>"
+                            + "<td class='empleado_td'>" + item.roleName + "</td>"
+                            + "<td class='empleado_td'>" + item.roleDescription + "</td>"
+                            + "<td class='empleado_td'>$ " + item.hourlySalary + "</td>"
+                            + "<td class='empleado_td'>$ " + item.monthlySalary + "</td>"
+                            + "<td class='empleado_td'>$ " + item.annualSalary + "</td>"
+                            + "</tr>";
+                        $('#tblEmpleado tbody').append(rows);
+                    });
+                },
+                error: function (xhr, textStatus, error) {
+                    console.log(xhr.statusText);
+                    console.log(textStatus);
+                    console.log(error);
+                }
+            });
+            return false;
+        });
+    });
+</script>
+<style type="text/css">
+    html {
+        background-color: #FFFFFF;
+    }
+
+    body {
+        padding: 5%;
+    }
+
+    #txtId {
+        border-radius: 7px;
+        wi
+    }
+
+    #btnPost {
+        border-radius: 7px;
+        background-color: #b9c9fe;
+        color: #039;
+    }
+
+    #btnPost:hover {
+        background: #e8edff;
+        color: #669;
+    }
+
+    #tblEmpleado {
+        width: 100%;
+        font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+        font-size: 12px;
+        text-align: left;
+        border-collapse: collapse;
+    }
+
+    .empleado_th {
+        font-size: 13px;
+        font-weight: bold;
+        padding: 8px;
+        background: #b9c9fe;
+        border-top: 4px solid #aabcfe;
+        border-bottom: 1px solid #fff;
+        color: #039;
+    }
+
+    .empleado_td {
+        padding: 8px;
+        background: #e8edff;
+        border-bottom: 1px solid #fff;
+        color: #669;
+        border-top: 1px solid transparent;
+    }
+
+    tr:hover td {
+        background: #d0dafd;
+        color: #339;
+    }
+</style>

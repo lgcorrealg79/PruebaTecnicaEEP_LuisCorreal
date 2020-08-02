@@ -1,0 +1,5 @@
+c:\users\mi equipo\documents\visual studio 2012\Projects\PruebaTecnicaEEP_LuisCorreal\CapaDatosEmpleados\bin\Debug\CapaDatosEmpleados.dll
+c:\users\mi equipo\documents\visual studio 2012\Projects\PruebaTecnicaEEP_LuisCorreal\CapaDatosEmpleados\bin\Debug\CapaDatosEmpleados.pdb
+c:\users\mi equipo\documents\visual studio 2012\Projects\PruebaTecnicaEEP_LuisCorreal\CapaDatosEmpleados\obj\Debug\CapaDatosEmpleados.csprojResolveAssemblyReference.cache
+c:\users\mi equipo\documents\visual studio 2012\Projects\PruebaTecnicaEEP_LuisCorreal\CapaDatosEmpleados\obj\Debug\CapaDatosEmpleados.dll
+c:\users\mi equipo\documents\visual studio 2012\Projects\PruebaTecnicaEEP_LuisCorreal\CapaDatosEmpleados\obj\Debug\CapaDatosEmpleados.pdb
